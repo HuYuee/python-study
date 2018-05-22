@@ -2,8 +2,8 @@
 # 示例一：记录输入的元音字母的频度
 values = ['a', 'e', 'i', 'o', 'u']
 founds = {}
-for item in values:
-    founds[item] = 0
+# for item in values:
+#     founds[item] = 0
 
 isBegin = True
 
@@ -13,9 +13,10 @@ while(isBegin):
     if word == 'y' or word == 'Y':
         isBegin = False
     else:
-        for item in values:
-            if item == word or item in word:
+        for item in word:
+            if item in values:
+                founds.setdefault(item, 0) # 调用python自带的设置默认值的API
                 founds[item] += 1
-
+                
 for k, v in sorted(founds.items()):
     print(k, 'was found', v, 'time')
